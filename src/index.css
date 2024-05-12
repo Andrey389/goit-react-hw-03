@@ -27,3 +27,6 @@ img {
 ul {
   list-style: none;
 }
+body {
+  margin: 20px;
+}
