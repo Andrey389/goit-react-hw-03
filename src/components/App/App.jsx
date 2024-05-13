@@ -6,11 +6,13 @@ import { useState } from 'react';
 
 export default function App() {
   const [tasks, setTasks] = useState(UserData);
-  const addTask = newTask => {};
+  const addTask = newTask => {
+    console.log(newTask);
+  };
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onAdd={addTask} />
       <SearchBox />
       <ContactList items={tasks} />
     </>
