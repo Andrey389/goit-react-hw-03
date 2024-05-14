@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import css from './ContactForm.module.css';
 import * as Yup from 'yup';
+// import { nanoid } from 'nanoid';
 
 const UserChema = Yup.object().shape({
   name: Yup.string()
@@ -13,10 +14,17 @@ const UserChema = Yup.object().shape({
     .required("Це обов'язкове поле!"),
 });
 export default function ContactForm({ onAdd }) {
-  const handleSubmit = (values, actions) => {
-    onAdd(values);
+  const handleSubmit = (e, actions) => {
+    onAdd(
+      // {
+      // id: Date.now(),
+      // name: e.target.elements.name.value,
+      // number: e.target.elements.number.value,},
+      e
+    );
     actions.resetForm();
   };
+  console.log(onAdd);
 
   return (
     <Formik
