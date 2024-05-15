@@ -1,3 +1,9 @@
+.ulContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
 .container {
   display: flex;
 
