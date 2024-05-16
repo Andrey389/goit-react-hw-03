@@ -1,6 +1,6 @@
 import css from './SearchBox.module.css';
 
-export default function SearchBox({ value, onFilter }) {
+export default function SearchBox({ value, onSearch }) {
   return (
     <>
       <h2>Find contacts by name</h2>
@@ -8,7 +8,7 @@ export default function SearchBox({ value, onFilter }) {
         className={css.box}
         type="text"
         value={value}
-        onChange={event => onFilter(event.target.value)}
+        onChange={event => onSearch(event.target.value)}
       />
     </>
   );

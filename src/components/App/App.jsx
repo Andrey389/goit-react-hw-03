@@ -4,44 +4,44 @@ import SearchBox from '../SearchBox/SearchBox';
 import ContactForm from '../ContactForm/ContactForm';
 import { useState, useEffect } from 'react';
 
-const getTask = () => {
-  const saveTask = localStorage.getItem('render-value');
-  if (saveTask !== null) {
-    return JSON.parse(saveTask);
+const getContact = () => {
+  const saveContact = localStorage.getItem('render-value');
+  if (saveContact !== null) {
+    return JSON.parse(saveContact);
   }
-  return [UserData];
+  return UserData;
 };
 
 export default function App() {
-  const [tasks, setTasks] = useState(getTask);
-  const [filter, setFilter] = useState('');
+  const [contacts, setContacts] = useState(getContact);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('render-value', JSON.stringify(tasks));
-  }, [tasks]);
+    localStorage.setItem('render-value', JSON.stringify(contacts));
+  }, [contacts]);
 
-  const addTask = newTask => {
-    setTasks(prevTasks => {
-      return [...prevTasks, newTask];
+  const addContact = newContact => {
+    setContacts(prevContacts => {
+      return [...prevContacts, newContact];
     });
   };
 
-  const deleteTask = taskId => {
-    setTasks(prevTasks => {
-      return prevTasks.filter(task => task.id !== taskId);
+  const deleteContact = contactId => {
+    setContacts(prevContacts => {
+      return prevContacts.filter(contact => contact.id !== contactId);
     });
   };
 
-  const visibleTask = tasks.filter(task =>
-    task.name.toLowerCase().includes(filter.toLowerCase())
+  const visibleContact = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addTask} />
-      <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList items={visibleTask} onDelete={deleteTask} />
+      <ContactForm onAdd={addContact} />
+      <SearchBox value={search} onSearch={setSearch} />
+      <ContactList items={visibleContact} onDelete={deleteContact} />
     </>
   );
 }
