@@ -1,8 +1,0 @@
-{
-    contacts: {
-          items: []
-      },
-    filters: {
-          name: ""
-      }
-  }
